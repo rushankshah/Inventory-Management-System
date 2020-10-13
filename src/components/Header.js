@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
         <div>
             <div className="navbar-fixed">
-                <nav className="purple">
+                <nav className="lime">
                     <div className="nav-wrapper">
                         <a href="#!" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <a href="#home" className="brand-logo">SEF</a>

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import Header from './Header'
+import LoginPage from './LoginPage'
 import M from 'materialize-css/dist/js/materialize.min.js';
 export default () => {
 
@@ -7,6 +7,6 @@ export default () => {
         M.AutoInit();
       })
     
-    return (<Header></Header>)
+    return (<LoginPage/>)
 }
   
