@@ -1,10 +1,8 @@
 import React from 'react'
-import Header from './Header'
 
 const LoginPage = () => {
     return (
         <div>
-            <Header />
             <br></br>
             <div className="container">
                 <div className="row card hoverable">
@@ -13,12 +11,14 @@ const LoginPage = () => {
                         <form className="row s12">
                             <div className="col s12">
                                 <div className="input-field">
-                                    <input type="text" name="" placeholder="Username*" />
+                                    <input type="email" id='email' required />
+                                    <label for="email">Email*</label>
                                 </div>
                             </div>
                             <div className="col s12">
                                 <div className="input-field">
-                                    <input type="password" name="" placeholder="Password*" />
+                                    <input type="password" id='password' required />
+                                    <label for='password'>Password*</label>
                                 </div>
                             </div>
                             <div className="col s12 center">
