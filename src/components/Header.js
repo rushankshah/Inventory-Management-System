@@ -16,6 +16,9 @@ const Navbar = () => {
                             <li>
                                 <Link to='/login' className='waves-effect waves-light'>Login</Link>
                             </li>
+                            <li>
+                                <Link to='/table' className='waves-effect waves-light'>Table</Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -27,6 +30,9 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link to='/login' className='waves-effect waves-light'>Login</Link>
+                </li>
+                <li>
+                    <Link to='/table' className='waves-effect waves-light'>Table</Link>
                 </li>
             </ul>
         </div>
