@@ -3,60 +3,69 @@ import React from 'react'
 const PurchaseEntryPage = () => {
     return (
         <div>
+            <br></br>
             <div className='container'>
+            <div class="row">
+          <div class="col l3 m3 s12"></div>
+          <div class="col l6 m3 s12">
+                <div className="row card hoverable-p deep purple lighten-5">
                 <div className="card-content ">
-                    <h4 className="center">Enter a new purchase</h4>
+                    <h3> <div className="center">New Purchase</div></h3>
+                    <h7 ><div className="center">Enter details of new purchase</div></h7>
                     <form className="row s12">
-                        <div className="col s4">
-                            <div className="input-field">
-                                <input type='text' className="datepicker" required />
-                                <label>Enter date</label>
-                            </div>
-                        </div>
-                        <div className="col s8">
+                    <div className="col s8 offset-s1">
                             <div className="input-field">
                                 <input type="text" required />
-                                <label>Enter company Name</label>
+                                <label>Company Name</label>
+                            </div>
+                    
+                        <div className="col s8">
+                            <div className="input-field">
+                                <input type='text' className="datepicker" required />
+                                <label>Date</label>
                             </div>
                         </div>
-                        <div className='col s3'>
+
+                        </div>
+                        <div className='col s4 offset-s1 '>
                             <select required>
-                                <option value="1">H.R.</option>
+                                 <option value="1">H.R.</option>
                                 <option value="2">C.R.</option>
                                 <option value="3">G.P.</option>
                             </select>
                             <label>Quality</label>
+                            
                         </div>
-                        <div className='col s3'>
+                        <div className='col s4 offset-s1'>
                             <div className="input-field">
                                 <input type="number" required />
-                                <label>Enter thickness</label>
+                                <label>Thickness</label>
                             </div>
                         </div>
-                        <div className='col s3'>
+                        <div className='col s4 offset-s1'>
                             <div className="input-field">
                                 <input type="number" required />
-                                <label>Enter width</label>
+                                <label>Width</label>
                             </div>
                         </div>
-                        <div className='col s3'>
+                        <div className='col s4 offset-s1'>
                             <div className="input-field">
                                 <input type="number" required />
-                                <label>Enter number of pieces</label>
+                                <label>No. of pieces</label>
                             </div>
                         </div>
-                        <div className='col s12'>
+                        <div className='col s4 offset-s1'>
                             <div className='input-field'>
                             <input type="number" required />
-                                <label>Enter weight</label>
+                                <label>Weight</label>
                             </div>
                         </div>
                         <div className="col s12 center">
-                            <button type="button" className="btn btn-large waves-effect waves-light">Submit<i className="material-icons right">send</i></button>
+                            <button type="button" className="btn  waves-effect waves-light deep-purple">Submit<i className="material-icons right">send</i></button>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div></div></div></div>
         </div>
     )
 }

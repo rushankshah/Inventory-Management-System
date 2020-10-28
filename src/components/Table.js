@@ -26,7 +26,7 @@ const columns = [
 
 function App() {
     return (
-        <div className="App">
+        <div className="App ">
             <DataTable
                 title="Employees"
                 columns={columns}
