@@ -1,26 +1,22 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const LoginPage = () => {
-
+export default function ForgotPassword() {
     const emailRef = useRef()
-    const passwordRef = useRef()
-    const { login } = useAuth()
+    const { resetPassword } = useAuth()
     const [loading, setLoading] = useState(false)
-    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
         try {
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push('/')
-            M.toast({ html: 'Login successful', classes: 'rounded' })
+            await resetPassword(emailRef.current.value)
+            M.toast({ html: 'Email sent. Please check your inbox', classes: 'rounded' })
             setLoading(false)
         } catch (e) {
-            M.toast({ html: 'Login failed. Check credentials', classes: 'rounded' })
+            M.toast({ html: 'Failed to reset password. Check credentials', classes: 'rounded' })
             setLoading(false)
             return
         }
@@ -36,7 +32,7 @@ const LoginPage = () => {
                     <div className="col l6 m3 s12">
                         <div className="row card hoverable-p deep purple lighten-5">
                             <div className="card-content ">
-                                <h3 className="center">Login</h3>
+                                <h3 className="center">Reset password</h3>
                                 <form onSubmit={handleSubmit} className="row s12">
                                     <div className="col s2"></div>
                                     <div className="col s8">
@@ -47,21 +43,12 @@ const LoginPage = () => {
                                         </div>
                                     </div><div className="col s2"></div>
                                     <br></br>
-                                    <div className="row">
-                                        <div className="col s2"></div>
-                                        <div className="col s8 offset-s2">
-                                            <div className="input-field ">
-                                                <i className="material-icons prefix">lock</i>
-                                                <input type="password" ref={passwordRef} id='password' required />
-                                                <label htmlFor='password'>Password*</label>
-                                            </div>
-                                        </div></div>
                                     <div className="col s12 center">
-                                        <button disabled={loading} type="submit" className="btn  waves-effect waves-light deep-purple ">Sign In<i className="material-icons right">send</i></button>
+                                        <button disabled={loading} type="submit" className="btn  waves-effect waves-light deep-purple ">Reset password<i className="material-icons right">send</i></button>
                                     </div>
                                 </form>
                                 <div>
-                                    <Link to='/forgot-password'>Forgot Password?</Link>
+                                    <Link to='/login'>Login</Link>
                                 </div>
                                 <div>
                                     Need an account? <Link to='signup'>Sign up</Link>
@@ -74,5 +61,3 @@ const LoginPage = () => {
         </div>
     )
 }
-
-export default LoginPage

@@ -23,7 +23,7 @@ export default () => {
         <Switch>
           <PrivateRoute exact path='/' component={PurchaseEntryPage}></PrivateRoute>
           <Route exact path='/login' component={LoginPage}></Route>
-          <PrivateRoute exact path='/table' component={Table}></PrivateRoute>
+          <Route exact path='/table' component={Table}></Route>
           <Route path='/signup' component={SignUpPage}></Route>
           <Route path='/forgot-password' component={ForgotPassword}></Route>
         </Switch>
