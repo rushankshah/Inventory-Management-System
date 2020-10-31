@@ -5,13 +5,13 @@ const PurchaseEntryPage = () => {
         <div>
             <br></br>
             <div className='container'>
-            <div class="row">
-          <div class="col l3 m3 s12"></div>
-          <div class="col l6 m3 s12">
+            <div className="row">
+          <div className="col l3 m3 s12"></div>
+          <div className="col l6 m3 s12">
                 <div className="row card hoverable-p deep purple lighten-5">
                 <div className="card-content ">
                     <h3> <div className="center">New Purchase</div></h3>
-                    <h7 ><div className="center">Enter details of new purchase</div></h7>
+                    <h7><div className="center">Enter details of new purchase</div></h7>
                     <form className="row s12">
                     <div className="col s8 offset-s1">
                             <div className="input-field">

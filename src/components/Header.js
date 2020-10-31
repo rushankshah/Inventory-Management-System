@@ -10,14 +10,14 @@ const Navbar = () => {
                         <a href="#!" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <a href="#home" className="brand-logo s12">Inventory Management System</a>
                         <ul className="right hide-on-med-and-down">
-                            <li><Link to='/' className='waves-effect waves-light'><i class="material-icons">add</i></Link>
+                            <li><Link to='/' className='waves-effect waves-light'><i className="material-icons">add</i></Link>
                                 
                             </li>
                             <li>
-                                <Link to='/table' className='waves-effect waves-light'><i class="material-icons">view_list</i></Link>
+                                <Link to='/table' className='waves-effect waves-light'><i className="material-icons">view_list</i></Link>
                             </li>
                             <li>
-                                <Link to='/login' className='waves-effect waves-light'><i class="material-icons">person</i></Link>
+                                <Link to='/login' className='waves-effect waves-light'><i className="material-icons">person</i></Link>
                             </li>
                         </ul>
                     </div>
