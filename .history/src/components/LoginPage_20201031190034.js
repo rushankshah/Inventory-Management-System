@@ -1,29 +1,28 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
 
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
+    const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
         try {
+            setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push('/')
-            M.toast({ html: 'Login successful', classes: 'rounded' })
-            setLoading(false)
-        } catch (e) {
-            M.toast({ html: 'Login failed. Check credentials', classes: 'rounded' })
-            setLoading(false)
-            return
+        } catch (error) {
+            setError('Failed to login')
+            M.toast({ html: this.error, classes: 'rounded' })
         }
+        M.toast({html:'Login successful', classes:'rounded'})
+        setLoading(false)
     }
 
     return (

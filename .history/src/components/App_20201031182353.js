@@ -7,7 +7,6 @@ import PurchaseEntryPage from './PurchaseEntryPage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import { AuthProvider } from '../contexts/AuthContext';
-import PrivateRoute from './PrivateRoute';
 
 export default () => {
 
@@ -17,13 +16,13 @@ export default () => {
 
   return (
     <Router>
+      <Header />
       <AuthProvider>
-        <Header />
         <Switch>
-          <PrivateRoute exact path='/' component={PurchaseEntryPage}></PrivateRoute>
+          <Route exact path='/' component={PurchaseEntryPage}></Route>
           <Route exact path='/login' component={LoginPage}></Route>
           <Route exact path='/table' component={Table}></Route>
-          <Route path='/signup' component={SignUpPage}></Route>
+          <Route exact path='/signup' component={SignUpPage}></Route>
         </Switch>
       </AuthProvider>
     </Router>

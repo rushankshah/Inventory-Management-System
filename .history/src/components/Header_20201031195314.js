@@ -1,20 +1,17 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 const Navbar = () => {
-    const history = useHistory()
 
     const { currentUser, logout } = useAuth()
 
-    const handleLogOut = async () => {
+    const handleLogOut = () => {
         try {
-            await logout()
-            history.push('/login')
-            M.toast({html: 'Logout successful', classes: 'rounded'})
+            
         } catch (e) {
-            M.toast({html: 'Failed to log out', classes:'rounded'})
+            M.toast({html: 'Failed ton log out', classes:'rounded'})
         }
     }
 

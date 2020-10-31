@@ -17,13 +17,13 @@ const LoginPage = () => {
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
             history.push('/')
-            M.toast({ html: 'Login successful', classes: 'rounded' })
-            setLoading(false)
         } catch (e) {
             M.toast({ html: 'Login failed. Check credentials', classes: 'rounded' })
             setLoading(false)
             return
         }
+        M.toast({html:'Login successful', classes:'rounded'})
+        setLoading(false)
     }
 
     return (
