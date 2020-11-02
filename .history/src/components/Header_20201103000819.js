@@ -9,7 +9,6 @@ const Navbar = () => {
     useEffect(()=>{
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');
-            // eslint-disable-next-line
             var instances = M.Sidenav.init(elems, []);
           });
     })

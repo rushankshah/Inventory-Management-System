@@ -24,7 +24,7 @@ export default () => {
           <PrivateRoute exact path='/' component={PurchaseEntryPage}></PrivateRoute>
           <Route exact path='/login' component={LoginPage}></Route>
           <PrivateRoute exact path='/table' component={Table}></PrivateRoute>
-          <PrivateRoute path='/signup' component={SignUpPage}></PrivateRoute>
+          <PrivateRoute path='/signup' component={SignUpPage}></Route>
           <Route path='/forgot-password' component={ForgotPassword}></Route>
         </Switch>
       </AuthProvider>

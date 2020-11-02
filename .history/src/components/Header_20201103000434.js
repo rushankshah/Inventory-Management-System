@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import img from '../images/logo512.png'
 const Navbar = () => {
     const history = useHistory()
-
-    useEffect(()=>{
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            // eslint-disable-next-line
-            var instances = M.Sidenav.init(elems, []);
-          });
-    })
 
     const { currentUser, logout } = useAuth()
 

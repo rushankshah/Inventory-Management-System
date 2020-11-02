@@ -63,8 +63,11 @@ const LoginPage = () => {
                                     </div>
                                 </form>
                                 <br></br>
-                                <div className="col s12 center">
+                                <div className="col deep ">
                                     <Link to='/forgot-password'>Forgot Password?</Link>
+                                </div>
+                                <div className="col offset-s3">
+                                    Need an account? <Link to='signup'>Sign up</Link>
                                 </div>
                                 <br></br><br></br>
                             </div>
