@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import { Link, useHistory } from 'react-router-dom'
+import '../css/main.css'
 
 const LoginPage = () => {
 
@@ -28,15 +29,16 @@ const LoginPage = () => {
 
     return (
         <div>
+            <body>
             <br></br>
             <br></br>
             <div className="container ">
                 <div className="row">
                     <div className="col l3 m3 s12"></div>
                     <div className="col l6 m3 s12">
-                        <div className="row card hoverable-p deep purple lighten-5">
+                        <div className="row card hoverable-p deep-purple lighten-5">
                             <div className="card-content ">
-                                <h3 className="center">Login</h3>
+                                <h3 className="center">Sign In</h3>
                                 <form onSubmit={handleSubmit} className="row s12">
                                     <div className="col s2"></div>
                                     <div className="col s8">
@@ -55,22 +57,25 @@ const LoginPage = () => {
                                                 <input type="password" ref={passwordRef} id='password' required />
                                                 <label htmlFor='password'>Password*</label>
                                             </div>
+                                           
                                         </div></div>
                                     <div className="col s12 center">
                                         <button disabled={loading} type="submit" className="btn  waves-effect waves-light deep-purple ">Sign In<i className="material-icons right">send</i></button>
                                     </div>
                                 </form>
-                                <div>
+                                <br></br>
+                                <div className="col deep ">
                                     <Link to='/forgot-password'>Forgot Password?</Link>
                                 </div>
-                                <div>
+                                <div className="col offset-s3">
                                     Need an account? <Link to='signup'>Sign up</Link>
                                 </div>
+                                <br></br><br></br>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></body>
         </div>
     )
 }

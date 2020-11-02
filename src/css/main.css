@@ -1,0 +1,46 @@
+
+body {
+    background-image: url('../images/bg.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+  }
+
+  @media only screen and (max-width: 767px) {
+    body {
+      background-image: url('../images/bg.jpeg');
+    }
+      }
+
+ /* label color */
+ .input-field label {
+    color: #000;
+  }
+  /* label focus color */
+  .input-field input:focus + label {
+    color:#673ab7 !important;
+  }
+  /* label underline focus color */
+  .input-field input:focus {
+    border-bottom: 1px solid #673ab7 !important;
+    box-shadow: 0 1px 0 0 #673ab7 !important;
+  }
+  /* valid color */
+  .input-field input.valid {
+    border-bottom: 1px solid #673ab7;
+    box-shadow: 0 1px 0 0 #673ab7;
+  }
+  /* invalid color */
+  .input-field input.invalid {
+    border-bottom: 1px solid #673ab7 !important;
+    box-shadow: 0 1px 0 0  #673ab7 !important;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color:#673ab7;
+  }
+   
+  
+  

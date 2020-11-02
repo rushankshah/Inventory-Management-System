@@ -37,7 +37,8 @@ export default function SignUp() {
                     <div className="col l6 m3 s12">
                         <div className="row card hoverable-p deep purple lighten-5">
                             <div className="card-content ">
-                                <h3 className="center">Register a new user</h3>
+                                <h3 className="center">Sign Up</h3>
+                                <h6 className="center">Register new user here</h6>
                                 <form onSubmit={handleSubmit} className="row s12">
                                     <div className="col s2"></div>
                                     <div className="col s8">
@@ -61,9 +62,11 @@ export default function SignUp() {
                                         <button type="submit" disabled={loading} className="btn  waves-effect waves-light deep-purple ">Register<i className="material-icons right">send</i></button>
                                     </div>
                                 </form>
-                                <div>
-                                    Already have an account? <Link to='/login'>Login</Link>
+                                <br></br>
+                                <div className="col offset-s6">
+                                    Already have an account? <Link to='/login'>Sign In</Link>
                                 </div>
+                                <br></br><br></br>
                             </div>
                         </div>
                     </div>
