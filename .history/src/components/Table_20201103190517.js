@@ -67,11 +67,8 @@ function App() {
     }
     useEffect(() => {
         getData()
-    }, [])
-
-    useEffect(()=>{
         M.AutoInit()
-    })
+    }, [])
 
     return (
         <div className="App">

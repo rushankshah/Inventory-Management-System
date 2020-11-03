@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import M from 'materialize-css/dist/js/materialize.min.js'
 
 const columns = [
     {
@@ -43,8 +42,7 @@ const columns = [
 
 function App() {
     const [purchaseHistoryData, setPurchaseData] = useState([])
-    const [loading, setLoading] = useState(true)
-    async function getData() {
+    async function getData(){
         const ItemRef = firestore.collection('/Item')
         await ItemRef.get().then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
@@ -63,26 +61,21 @@ function App() {
                 })
             })
         })
-        setLoading(false)
     }
     useEffect(() => {
         getData()
     }, [])
 
-    useEffect(()=>{
-        M.AutoInit()
-    })
-
     return (
-        <div className="App">
-            {!loading && <DataTable
+        <div className="App ">
+            <DataTable
                 title="Purchase History"
                 columns={columns}
                 data={purchaseHistoryData}
                 pagination
                 responsive
                 highlightOnHover
-            />}
+            />
         </div>
     );
 }

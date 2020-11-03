@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import M from 'materialize-css/dist/js/materialize.min.js'
 
 const columns = [
     {
@@ -43,34 +42,33 @@ const columns = [
 
 function App() {
     const [purchaseHistoryData, setPurchaseData] = useState([])
-    const [loading, setLoading] = useState(true)
-    async function getData() {
-        const ItemRef = firestore.collection('/Item')
-        await ItemRef.get().then(function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-                var data = childSnapshot.data()
-                setPurchaseData((prevData) => {
-                    prevData.push({
-                        Company: data.Company,
-                        Date: data.Date,
-                        'Number of pieces': data.Number_of_pieces,
-                        Quality: data.Quality,
-                        Thickness: data.Thickness,
-                        Width: data.Width,
-                        Weight: data.Weight
-                    })
-                    return prevData
-                })
+    const [loading, setLoading] = useState(false)
+    function addData(snapshot){
+        snapshot.forEach(function (childSnapshot) {
+            var data = childSnapshot.data()
+            setPurchaseData((prevData) => {
+                prevData.push(JSON.stringify({
+                    Company: data.Company,
+                    Date: data.Date,
+                    'Number of pieces': data.Number_of_pieces,
+                    Quality: data.Quality,
+                    Thickness: data.Thickness,
+                    Width: data.Width,
+                    Weight: data.Weight
+                }))
+                return prevData
             })
         })
-        setLoading(false)
+        return true;
+    }
+    async function getData() {
+        const ItemRef = firestore.collection('/Item')
+        const snapshot =  ItemRef.get();
+        if(addData(snapshot))
+            setLoading(true)
     }
     useEffect(() => {
         getData()
-    }, [])
-
-    useEffect(()=>{
-        M.AutoInit()
     })
 
     return (

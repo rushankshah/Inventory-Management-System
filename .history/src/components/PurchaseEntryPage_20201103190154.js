@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { firestore } from '../utils/firebase'
 import M from 'materialize-css/dist/js/materialize.min.js'
-import { useHistory } from 'react-router-dom'
 
 export default function () {
     useEffect(()=>{
@@ -15,8 +14,6 @@ export default function () {
     const width = useRef()
     const numberOfPieces = useRef()
     const weight = useRef()
-
-    const history = useHistory()
 
     const [loading, setLoading] = useState(false)
 
@@ -43,7 +40,6 @@ export default function () {
                 width.current.value = ''
             })
             setLoading(false)
-            history.push('/table')
         } catch(error){
             M.toast({ html: 'Add failed. Please try again', classes: 'rounded' })
             setLoading(false)

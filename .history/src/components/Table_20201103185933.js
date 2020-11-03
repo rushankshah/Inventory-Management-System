@@ -50,7 +50,7 @@ function App() {
             snapshot.forEach(function (childSnapshot) {
                 var data = childSnapshot.data()
                 setPurchaseData((prevData) => {
-                    prevData.push({
+                    prevData.push(JSON.stringify({
                         Company: data.Company,
                         Date: data.Date,
                         'Number of pieces': data.Number_of_pieces,
@@ -58,7 +58,7 @@ function App() {
                         Thickness: data.Thickness,
                         Width: data.Width,
                         Weight: data.Weight
-                    })
+                    }))
                     return prevData
                 })
             })
@@ -67,9 +67,6 @@ function App() {
     }
     useEffect(() => {
         getData()
-    }, [])
-
-    useEffect(()=>{
         M.AutoInit()
     })
 

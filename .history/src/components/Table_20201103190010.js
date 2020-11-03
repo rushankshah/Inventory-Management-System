@@ -67,9 +67,6 @@ function App() {
     }
     useEffect(() => {
         getData()
-    }, [])
-
-    useEffect(()=>{
         M.AutoInit()
     })
 
