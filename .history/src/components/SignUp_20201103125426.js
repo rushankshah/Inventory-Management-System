@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export default function SignUp() {
 
@@ -23,7 +23,7 @@ export default function SignUp() {
             setLoading(false)
             return
         }
-        M.toast({ html: 'Successfully signed up', classes: 'rounded' })
+        M.toast({html: 'Successfully signed up', classes:'rounded'})
         setLoading(false)
     }
 

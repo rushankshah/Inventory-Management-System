@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { firestore } from '../utils/firebase'
+import React, { useRef, useState } from 'react'
+import { ItemRef } from '../utils/firebase'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 export default function () {
-    useEffect(()=>{
-        M.AutoInit()
-    })
+
+    const [loading, setLoading] = useState(false)
 
     const companyName = useRef()
     const date = useRef()
@@ -15,14 +14,11 @@ export default function () {
     const numberOfPieces = useRef()
     const weight = useRef()
 
-    const [loading, setLoading] = useState(false)
-
     async function handleSubmit(e){
         e.preventDefault()
         try{
             setLoading(true)
-            const ItemRef = firestore.collection('/Item')
-            await ItemRef.add({
+            ItemRef.add({
                 Company: companyName.current.value,
                 Date: date.current.value,
                 'Number of pieces': numberOfPieces.current.value,
@@ -30,19 +26,9 @@ export default function () {
                 Thickness: thickness.current.value,
                 Weight: weight.current.value,
                 Width: width.current.value
-            }).then(function(docRef){
-                M.toast({html:'Document added', classes:'rounded'})
-                companyName.current.value = ''
-                date.current.value = ''
-                numberOfPieces.current.value = ''
-                quality.current.value = ''
-                thickness.current.value = ''
-                weight.current.value = ''
-                width.current.value = ''
             })
-            setLoading(false)
         } catch(error){
-            M.toast({ html: 'Add failed. Please try again', classes: 'rounded' })
+            M.toast({ html: 'Sign in failed. Please try again', classes: 'rounded' })
             setLoading(false)
             return
         }
@@ -59,7 +45,7 @@ export default function () {
                             <div className="card-content">
                                 <h3> <div className="center">New Purchase</div></h3>
                                 <h6><div className="center">Enter details of new purchase</div></h6>
-                                <form onSubmit={handleSubmit} className="row s12">
+                                <form className="row s12">
                                     <div className="col s8 offset-s1">
                                         <div className="input-field">
                                             <input type="text" ref={companyName} required />
@@ -106,7 +92,7 @@ export default function () {
                                         </div>
                                     </div>
                                     <div className="col s12 center">
-                                        <button type="submit" disabled={loading} className="btn  waves-effect waves-light deep-purple">Submit<i className="material-icons right">send</i></button>
+                                        <button type="submit" disabled={!loading} className="btn  waves-effect waves-light deep-purple">Submit<i className="material-icons right">send</i></button>
                                     </div>
                                 </form>
                             </div>

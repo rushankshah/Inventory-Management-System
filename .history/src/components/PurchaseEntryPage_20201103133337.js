@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { firestore } from '../utils/firebase'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 export default function () {
-    useEffect(()=>{
-        M.AutoInit()
-    })
 
     const companyName = useRef()
     const date = useRef()
@@ -22,7 +19,7 @@ export default function () {
         try{
             setLoading(true)
             const ItemRef = firestore.collection('/Item')
-            await ItemRef.add({
+            ItemRef.add({
                 Company: companyName.current.value,
                 Date: date.current.value,
                 'Number of pieces': numberOfPieces.current.value,
@@ -30,19 +27,9 @@ export default function () {
                 Thickness: thickness.current.value,
                 Weight: weight.current.value,
                 Width: width.current.value
-            }).then(function(docRef){
-                M.toast({html:'Document added', classes:'rounded'})
-                companyName.current.value = ''
-                date.current.value = ''
-                numberOfPieces.current.value = ''
-                quality.current.value = ''
-                thickness.current.value = ''
-                weight.current.value = ''
-                width.current.value = ''
             })
-            setLoading(false)
         } catch(error){
-            M.toast({ html: 'Add failed. Please try again', classes: 'rounded' })
+            M.toast({ html: 'Sign in failed. Please try again', classes: 'rounded' })
             setLoading(false)
             return
         }

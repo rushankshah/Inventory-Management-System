@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import M from 'materialize-css/dist/js/materialize.min.js'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export default function SignUp() {
 
@@ -23,7 +23,7 @@ export default function SignUp() {
             setLoading(false)
             return
         }
-        M.toast({ html: 'Successfully signed up', classes: 'rounded' })
+        M.toast({html: 'Successfully signed up', classes:'rounded'})
         setLoading(false)
     }
 
@@ -62,6 +62,7 @@ export default function SignUp() {
                                         <button type="submit" disabled={loading} className="btn  waves-effect waves-light deep-purple ">Register<i className="material-icons right">send</i></button>
                                     </div>
                                 </form>
+                                <br></br>
                                 <br></br><br></br>
                             </div>
                         </div>

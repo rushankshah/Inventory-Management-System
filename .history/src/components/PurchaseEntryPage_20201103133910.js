@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { firestore } from '../utils/firebase'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 export default function () {
-    useEffect(()=>{
-        M.AutoInit()
-    })
 
     const companyName = useRef()
     const date = useRef()
