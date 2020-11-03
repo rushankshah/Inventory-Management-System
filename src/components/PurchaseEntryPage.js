@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { firestore } from '../utils/firebase'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import { useHistory } from 'react-router-dom'
+import '../css/main.css'
 
 export default function () {
     useEffect(()=>{
@@ -58,7 +59,7 @@ export default function () {
                 <div className="row">
                     <div className="col l3 m3 s12"></div>
                     <div className="col l6 m3 s12">
-                        <div className="row card hoverable-p deep purple lighten-5">
+                        <div className="row card hoverable-p">
                             <div className="card-content">
                                 <h3> <div className="center">New Purchase</div></h3>
                                 <h6><div className="center">Enter details of new purchase</div></h6>

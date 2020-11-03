@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('../images/bg.jpeg');
+    background-image: url('../images/bg.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,13 +10,16 @@ body {
 
   @media only screen and (max-width: 767px) {
     body {
-      background-image: url('../images/bg.jpeg');
-    }
-      }
-
+      background-image: url('../images/bg.jpg');
+    }}
+    
  /* label color */
  .input-field label {
-    color: #000;
+    color: #000 !important;
+  }
+  .row.card
+  {
+    background: rgba(237, 231, 246, 0.600) !important;
   }
   /* label focus color */
   .input-field input:focus + label {
@@ -32,6 +35,8 @@ body {
     border-bottom: 1px solid #673ab7;
     box-shadow: 0 1px 0 0 #673ab7;
   }
+ 
+  
   /* invalid color */
   .input-field input.invalid {
     border-bottom: 1px solid #673ab7 !important;
@@ -39,7 +44,7 @@ body {
   }
   /* icon prefix focus color */
   .input-field .prefix.active {
-    color:#673ab7;
+    color:#673ab7 !important;;
   }
    
   

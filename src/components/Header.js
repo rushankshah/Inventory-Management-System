@@ -28,25 +28,25 @@ const Navbar = () => {
             <div className="navbar-fixed">
                 <nav className="purple darken-4">
                     <div className="nav-wrapper">
-                        <a href="!#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                        <a href="!#" data-target="slide-out" className="sidenav-trigger"><i className="material-icons" title="Menu">menu</i></a>
                         <a href="/" className="brand-logo s12 "> <img src={img} width="6%" height="6%" alt="logo"></img>    Trade Track</a>
                         <ul className="right hide-on-med-and-down">
                             {currentUser && <div>
-                                <li><Link to='/' className='waves-effect waves-light'><i className="material-icons">add</i></Link></li>
+                                <li><Link to='/' className='waves-effect waves-light'><i className="material-icons" title="Add New Purchase">add</i></Link></li>
                                 <li>
-                                    <Link to='/table' className='waves-effect waves-light'><i className="material-icons">view_list</i></Link>
+                                    <Link to='/table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
                                 </li>
 
                                 <li>
-                                    <Link to='/signup' className='waves-effect waves-light'><i className="material-icons">person</i></Link>
+                                    <Link to='/signup' className='waves-effect waves-light'><i className="material-icons" title="Sign Up">person</i></Link>
                                 </li>
                                 <li>
-                                    <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons">power_settings_new</i>
+                                    <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons" title="Sign Out">power_settings_new</i>
                                     </Link></li>
                             </div>
                             }
                             {!currentUser && <div><li>
-                                <Link to='/login' className='waves-effect waves-light'><i className="material-icons">person</i></Link>
+                                <Link to='/login' className='waves-effect waves-light'><i className="material-icons" title="Sign In">person</i></Link>
                             </li>
                             </div>}
 

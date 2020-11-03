@@ -8,36 +8,43 @@ const columns = [
         name: 'Company',
         selector: 'Company',
         sortable: true,
+        center: true,
     },
     {
         name: 'Date',
         selector: 'Date',
         sortable: true,
+        center: true,
     },
     {
         name: 'Number of pieces',
         selector: 'Number of pieces',
         sortable: true,
+        center: true,
     },
     {
         name: 'Quality',
         selector: 'Quality',
-        sortable: true
+        sortable: true,
+        center: true,
     },
     {
         name: 'Thickness',
         selector: 'Thickness',
-        sortable: true
+        sortable: true,
+        center: true,
     },
     {
         name: 'Width',
         selector: 'Width',
-        sortable: true
+        sortable: true,
+        center: true,
     },
     {
         name: 'Weight',
         selector: 'Weight',
-        sortable: true
+        sortable: true,
+        center: true,
     }
 ];
 
@@ -74,6 +81,7 @@ function App() {
     })
 
     return (
+        <div className="center">
         <div className="App">
             {!loading && <DataTable
                 title="Purchase History"
@@ -82,7 +90,9 @@ function App() {
                 pagination
                 responsive
                 highlightOnHover
+                striped
             />}
+        </div>
         </div>
     );
 }
