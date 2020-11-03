@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 const columns = [
@@ -52,13 +51,12 @@ const columns = [
 function App() {
     const [purchaseHistoryData, setPurchaseData] = useState([])
     const [loading, setLoading] = useState(true)
-    const history = useHistory()
     async function getData() {
         const ItemRef = firestore.collection('/Item')
         await ItemRef.get().then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 var data = childSnapshot.data()
-                var id = childSnapshot.id
+                var id = childSnapshot.id()
                 setPurchaseData((prevData) => {
                     prevData.push({
                         id: id,
@@ -85,8 +83,7 @@ function App() {
     })
 
     function handleClick(row){
-        const rowID = row.id
-        history.push('/cutting-form?id='+rowID)
+        console.log(row)
     }
 
     return (

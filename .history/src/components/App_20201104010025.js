@@ -9,7 +9,6 @@ import Header from './Header'
 import { AuthProvider } from '../contexts/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import ForgotPassword from './ForgotPassword';
-import CuttingForm from './CuttingForm';
 
 export default () => {
 
@@ -23,7 +22,7 @@ export default () => {
           <PrivateRoute exact path='/table' component={Table}></PrivateRoute>
           <PrivateRoute path='/signup' component={SignUpPage}></PrivateRoute>
           <Route path='/forgot-password' component={ForgotPassword}></Route>
-          <PrivateRoute path='/cutting-form' component={CuttingForm}></PrivateRoute>
+          <PrivateRoute></PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>
