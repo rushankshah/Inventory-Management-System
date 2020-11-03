@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUp'
 import Table from './Table';
@@ -11,6 +11,10 @@ import PrivateRoute from './PrivateRoute';
 import ForgotPassword from './ForgotPassword';
 
 export default () => {
+
+  useEffect(() => {
+    M.AutoInit();
+  })
 
   return (
     <Router>

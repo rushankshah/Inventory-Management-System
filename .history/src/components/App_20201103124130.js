@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LoginPage from './LoginPage'
 import SignUpPage from './SignUp'
 import Table from './Table';
 import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css';
 import PurchaseEntryPage from './PurchaseEntryPage'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './Header'
@@ -11,6 +12,10 @@ import PrivateRoute from './PrivateRoute';
 import ForgotPassword from './ForgotPassword';
 
 export default () => {
+
+  useEffect(() => {
+    M.AutoInit();
+  })
 
   return (
     <Router>

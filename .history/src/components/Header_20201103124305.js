@@ -7,7 +7,7 @@ const Navbar = () => {
     const history = useHistory()
 
     useEffect(()=>{
-        M.AutoInit()
+
     })
 
     const { currentUser, logout } = useAuth()
