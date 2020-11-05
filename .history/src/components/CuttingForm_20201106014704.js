@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
 export default function CuttingForm({ location }) {
+    const [isWeightSatisfied, setIsWeightSatisfied] = useState(false)
     const [id, setID] = useState('')
     const [company, setCompany] = useState('')
     const [number_of_pieces, setNumber_of_pieces] = useState()
     const [quality, setQuality] = useState('')
     const [thickness, setThickness] = useState()
     const [loading, setLoading] = useState(false)
+    const [weight, setWeight] = useState(0)
     const [totalWeight, setTotalWeight] = useState()
     const [inputList, setInputList] = useState([{
-        width: '',
-        weight: '',
-        number_of_pieces: ''
+        width: null,
+        weight: null,
+        number_of_pieces: null
     },])
 
 
@@ -36,16 +38,16 @@ export default function CuttingForm({ location }) {
     function handleChange(e, i) {
         const { name, value } = e.target
         const list = [...inputList]
+        setWeight(prevWeight => Number(prevWeight)+Number(value))
         list[i][name] = value
         setInputList(list)
-        console.log(inputList)
     }
 
     function handleAddEvent() {
         setInputList([...inputList, {
-            width: '',
-            weight: '',
-            number_of_pieces: ''
+            width: null,
+            weight: null,
+            number_of_pieces: null
         }])
     }
 
@@ -72,6 +74,9 @@ export default function CuttingForm({ location }) {
                     </div>
                     <div>
                         <h5>Total weight: {totalWeight}</h5>
+                        <h5>Weight Cutted: <span style={{
+                            color: isWeightSatisfied ? 'green' : 'red'
+                        }}>{weight}</span></h5>
                     </div>
                 </div>
                 <div className="row">
@@ -81,15 +86,15 @@ export default function CuttingForm({ location }) {
                     return (
                         <div key={i}>
                             <div className="input-field">
-                                <input type="number" name="width" value={item.width} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.width} required onChange={e => handleChange(e, i)} />
                                 <label>Width</label>
                             </div>
                             <div className="input-field">
-                                <input type="number" name='number_of_pieces' value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
                                 <label>Number of pieces</label>
                             </div>
                             <div className="input-field">
-                                <input type="number" name='weight' value={item.weight} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.weight} required onChange={e => handleChange(e, i)} />
                                 <label>Weight</label>
                             </div>
                             <input type='button' value='remove' onClick={() => handleRemoveEvent(i)} />
@@ -97,7 +102,7 @@ export default function CuttingForm({ location }) {
                     )
                 })}
                 <div className="col s12 center">
-                    <button onClick={handleSubmit} disabled={loading} className="btn  waves-effect waves-light deep-purple ">Submit<i className="material-icons right">send</i></button>
+                    <button onClick={handleSubmit} disabled={loading} className="btn  waves-effect waves-light deep-purple ">Register<i className="material-icons right">send</i></button>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ const columns = [
     },
     {
         name: 'Number of pieces',
-        selector: 'Number_of_pieces',
+        selector: 'Number of pieces',
         sortable: true,
         center: true,
     },

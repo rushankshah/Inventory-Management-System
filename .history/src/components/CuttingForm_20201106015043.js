@@ -9,9 +9,9 @@ export default function CuttingForm({ location }) {
     const [loading, setLoading] = useState(false)
     const [totalWeight, setTotalWeight] = useState()
     const [inputList, setInputList] = useState([{
-        width: '',
-        weight: '',
-        number_of_pieces: ''
+        width: null,
+        weight: null,
+        number_of_pieces: null
     },])
 
 
@@ -43,9 +43,9 @@ export default function CuttingForm({ location }) {
 
     function handleAddEvent() {
         setInputList([...inputList, {
-            width: '',
-            weight: '',
-            number_of_pieces: ''
+            width: null,
+            weight: null,
+            number_of_pieces: null
         }])
     }
 
@@ -81,15 +81,15 @@ export default function CuttingForm({ location }) {
                     return (
                         <div key={i}>
                             <div className="input-field">
-                                <input type="number" name="width" value={item.width} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.width} required onChange={e => handleChange(e, i)} />
                                 <label>Width</label>
                             </div>
                             <div className="input-field">
-                                <input type="number" name='number_of_pieces' value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
                                 <label>Number of pieces</label>
                             </div>
                             <div className="input-field">
-                                <input type="number" name='weight' value={item.weight} required onChange={e => handleChange(e, i)} />
+                                <input type="number" value={item.weight} required onChange={e => handleChange(e, i)} />
                                 <label>Weight</label>
                             </div>
                             <input type='button' value='remove' onClick={() => handleRemoveEvent(i)} />

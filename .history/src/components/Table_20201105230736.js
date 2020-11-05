@@ -19,7 +19,7 @@ const columns = [
     },
     {
         name: 'Number of pieces',
-        selector: 'Number_of_pieces',
+        selector: 'Number of pieces',
         sortable: true,
         center: true,
     },
@@ -64,7 +64,7 @@ function App() {
                         id: id,
                         Company: data.Company,
                         Date: data.Date,
-                        Number_of_pieces: data.Number_of_pieces,
+                        'Number of pieces': data.Number_of_pieces,
                         Quality: data.Quality,
                         Thickness: data.Thickness,
                         Width: data.Width,
@@ -85,8 +85,9 @@ function App() {
     })
 
     function handleClick(row){
-
-        history.push('/cutting-form?id='+row.id+'&company='+row.Company+'&number_of_pieces='+row.Number_of_pieces+'&quality='+row.Quality+'&thickness='+row.Thickness+'&weight='+row.Weight)
+        const rowID = row.id
+        const rowCompany = row.Company
+        history.push('/cutting-form?id='+rowID+'&company='+rowCompany)
     }
 
     return (

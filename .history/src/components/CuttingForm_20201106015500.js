@@ -43,9 +43,9 @@ export default function CuttingForm({ location }) {
 
     function handleAddEvent() {
         setInputList([...inputList, {
-            width: '',
-            weight: '',
-            number_of_pieces: ''
+            width: null,
+            weight: null,
+            number_of_pieces: null
         }])
     }
 
