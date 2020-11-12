@@ -35,6 +35,7 @@ export default function () {
                 Weight: weight.current.value,
                 Width: width.current.value,
                 cutted: false,
+                sold: false
             }).then(function(docRef){
                 M.toast({html:'Document added', classes:'rounded'})
                 companyName.current.value = ''
@@ -45,7 +46,7 @@ export default function () {
                 width.current.value = ''
             })
             setLoading(false)
-            history.push('/purchase-history-table')
+            history.push('/table')
         } catch(error){
             M.toast({ html: 'Add failed. Please try again', classes: 'rounded' })
             setLoading(false)
@@ -88,25 +89,25 @@ export default function () {
                                     </div>
                                     <div className='col s4 offset-s1'>
                                         <div className="input-field">
-                                            <input type="number" step="0.01" min='0' required ref={thickness} />
+                                            <input type="number" required ref={thickness} />
                                             <label>Thickness</label>
                                         </div>
                                     </div>
                                     <div className='col s4 offset-s1'>
                                         <div className="input-field">
-                                            <input type="number" step='0.01' min='0' ref={width} required />
+                                            <input type="number" ref={width} required />
                                             <label>Width</label>
                                         </div>
                                     </div>
                                     <div className='col s4 offset-s1'>
                                         <div className="input-field">
-                                            <input type="number" step='0.01' min='0' ref={numberOfPieces} required />
+                                            <input type="number" ref={numberOfPieces} required />
                                             <label>No. of pieces</label>
                                         </div>
                                     </div>
                                     <div className='col s4 offset-s1'>
                                         <div className='input-field'>
-                                            <input type="number" step='0.01' min='0' ref={weight} required />
+                                            <input type="number" ref={weight} required />
                                             <label>Weight</label>
                                         </div>
                                     </div>

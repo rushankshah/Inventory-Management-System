@@ -47,6 +47,10 @@ export default function CuttingForm({ location }) {
         console.log(inputList)
     }
 
+    useEffect(()=>{
+        M.AutoInit()
+    },[])
+
     function handleAddEvent() {
         setInputList([...inputList, {
             date: '',
@@ -115,7 +119,7 @@ export default function CuttingForm({ location }) {
                         return (
                             <div key={i}>
                                 <div className="input-field">
-                                    <input type='text' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)}/>
+                                    <input type='date' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)}/>
                                     <label>Date</label>
                                 </div>
                                 <div className="input-field">

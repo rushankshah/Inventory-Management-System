@@ -35,6 +35,7 @@ export default function () {
                 Weight: weight.current.value,
                 Width: width.current.value,
                 cutted: false,
+                sold: false
             }).then(function(docRef){
                 M.toast({html:'Document added', classes:'rounded'})
                 companyName.current.value = ''
@@ -45,7 +46,7 @@ export default function () {
                 width.current.value = ''
             })
             setLoading(false)
-            history.push('/purchase-history-table')
+            history.push('/table')
         } catch(error){
             M.toast({ html: 'Add failed. Please try again', classes: 'rounded' })
             setLoading(false)

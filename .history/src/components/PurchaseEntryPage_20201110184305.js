@@ -35,6 +35,7 @@ export default function () {
                 Weight: weight.current.value,
                 Width: width.current.value,
                 cutted: false,
+                sold: false
             }).then(function(docRef){
                 M.toast({html:'Document added', classes:'rounded'})
                 companyName.current.value = ''

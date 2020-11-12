@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { firestore } from '../utils/firebase'
-import M from 'materialize-css'
+import M from 'materialize-css/dist/js/materialize.min.js'
 import { useHistory } from 'react-router-dom'
 
 export default function CuttingForm({ location }) {
@@ -12,8 +12,6 @@ export default function CuttingForm({ location }) {
     const [loading, setLoading] = useState(false)
     const [totalWeight, setTotalWeight] = useState()
     const [inputList, setInputList] = useState([{
-        date: '',
-        page_no: '',
         width: '',
         weight: '',
         number_of_pieces: ''
@@ -39,6 +37,10 @@ export default function CuttingForm({ location }) {
         // eslint-disable-next-line
     }, [])
 
+    useEffect(()=>{
+        M.AutoInit()
+    }, [])
+
     function handleChange(e, i) {
         const { name, value } = e.target
         const list = [...inputList]
@@ -55,6 +57,7 @@ export default function CuttingForm({ location }) {
             weight: '',
             number_of_pieces: '',
         }])
+        M.Datepicker.init()
     }
 
     function handleRemoveEvent(i) {
@@ -89,12 +92,12 @@ export default function CuttingForm({ location }) {
             setLoading(false)
             history.push('/purchase-history-table')
         } catch (error) {
-            M.toast({ html: 'Error' })
+            M.toast({html:'Error'})
         }
     }
 
     return (
-        <div className='container'>
+        <div>
             <div className='container white-text'>
                 <h1 className='center'>{company}</h1>
                 <div className='row s12'>
@@ -110,35 +113,33 @@ export default function CuttingForm({ location }) {
                 <div className="row">
                     <input type="button" value='add' onClick={handleAddEvent} />
                 </div>
-                {
-                    inputList.map((item, i) => {
-                        return (
-                            <div key={i}>
-                                <div className="input-field">
-                                    <input type='text' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)}/>
-                                    <label>Date</label>
-                                </div>
-                                <div className="input-field">
-                                    <input type="number" name="page_no" min='0' value={item.page_no} required onChange={e => handleChange(e, i)} />
-                                    <label>Page Number</label>
-                                </div>
-                                <div className="input-field">
-                                    <input type="number" name="width" step='0.01' min='0' value={item.width} required onChange={e => handleChange(e, i)} />
-                                    <label>Width</label>
-                                </div>
-                                <div className="input-field">
-                                    <input type="number" name='number_of_pieces' step='0.01' min='0' value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
-                                    <label>Number of pieces</label>
-                                </div>
-                                <div className="input-field">
-                                    <input type="number" name='weight' step='0.01' min='0' value={item.weight} required onChange={e => handleChange(e, i)} />
-                                    <label>Weight</label>
-                                </div>
-                                <input type='button' value='remove' onClick={() => handleRemoveEvent(i)} />
+                {inputList.map((item, i) => {
+                    return (
+                        <div key={i}>
+                            <div className="input-field">
+                                <input type='text' name='date' className="datepicker" value={item.date} required />
+                                <label>Date</label>
                             </div>
-                        )
-                    })
-                }
+                            <div className="input-field">
+                                <input type="number" name="page_no" min='0' value={item.page_no} required onChange={e => handleChange(e, i)} />
+                                <label>Page Number</label>
+                            </div>
+                            <div className="input-field">
+                                <input type="number" name="width" step='0.01' min='0' value={item.width} required onChange={e => handleChange(e, i)} />
+                                <label>Width</label>
+                            </div>
+                            <div className="input-field">
+                                <input type="number" name='number_of_pieces' step='0.01' min='0' value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />
+                                <label>Number of pieces</label>
+                            </div>
+                            <div className="input-field">
+                                <input type="number" name='weight' step='0.01' min='0' value={item.weight} required onChange={e => handleChange(e, i)} />
+                                <label>Weight</label>
+                            </div>
+                            <input type='button' value='remove' onClick={() => handleRemoveEvent(i)} />
+                        </div>
+                    )
+                })}
                 <div className="col s12 center">
                     <button onClick={handleSubmit} disabled={loading} className="btn  waves-effect waves-light deep-purple ">Submit<i className="material-icons right">send</i></button>
                 </div>

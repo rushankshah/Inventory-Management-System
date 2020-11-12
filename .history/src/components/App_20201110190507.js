@@ -5,7 +5,6 @@ import PurchaseHistoryTable from './PurchaseHistoryTable';
 import PendingFreshStock from './PendingFreshStockTable'
 import 'materialize-css/dist/css/materialize.min.css';
 import PurchaseEntryPage from './PurchaseEntryPage'
-import CuttedStockTable from './CuttedStockTable'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import { AuthProvider } from '../contexts/AuthContext';
@@ -27,7 +26,6 @@ export default () => {
           <Route path='/forgot-password' component={ForgotPassword}></Route>
           <PrivateRoute path='/cutting-form' component={CuttingForm}></PrivateRoute>
           <PrivateRoute path='/pending-fresh-stock' component={PendingFreshStock}></PrivateRoute>
-          <PrivateRoute path='/pending-cutted-stock' component={CuttedStockTable}></PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>

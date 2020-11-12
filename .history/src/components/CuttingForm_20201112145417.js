@@ -47,6 +47,11 @@ export default function CuttingForm({ location }) {
         console.log(inputList)
     }
 
+    useEffect(()=>{
+        let date_pickers = document.querySelectorAll('.datepicker')
+        M.Datepicker.init(date_pickers, {})
+    }, [])
+
     function handleAddEvent() {
         setInputList([...inputList, {
             date: '',

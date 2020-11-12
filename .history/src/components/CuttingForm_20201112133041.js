@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { firestore } from '../utils/firebase'
-import M from 'materialize-css'
+import M from 'materialize-css/dist/js/materialize.min.js'
 import { useHistory } from 'react-router-dom'
 
 export default function CuttingForm({ location }) {
@@ -12,8 +12,6 @@ export default function CuttingForm({ location }) {
     const [loading, setLoading] = useState(false)
     const [totalWeight, setTotalWeight] = useState()
     const [inputList, setInputList] = useState([{
-        date: '',
-        page_no: '',
         width: '',
         weight: '',
         number_of_pieces: ''
@@ -37,6 +35,10 @@ export default function CuttingForm({ location }) {
         setThickness(thickness)
         setTotalWeight(weight)
         // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+        M.AutoInit()
     }, [])
 
     function handleChange(e, i) {
@@ -94,7 +96,7 @@ export default function CuttingForm({ location }) {
     }
 
     return (
-        <div className='container'>
+        <div>
             <div className='container white-text'>
                 <h1 className='center'>{company}</h1>
                 <div className='row s12'>
@@ -115,7 +117,7 @@ export default function CuttingForm({ location }) {
                         return (
                             <div key={i}>
                                 <div className="input-field">
-                                    <input type='text' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)}/>
+                                    <input type='text' name='date' className="datepicker" value={item.date} required />
                                     <label>Date</label>
                                 </div>
                                 <div className="input-field">

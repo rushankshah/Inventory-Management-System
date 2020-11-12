@@ -47,6 +47,14 @@ export default function CuttingForm({ location }) {
         console.log(inputList)
     }
 
+    useEffect(()=>{
+        M.AutoInit()
+    }, [])
+
+    useEffect(()=>{
+        M.AutoInit()
+    }, [inputList])
+
     function handleAddEvent() {
         setInputList([...inputList, {
             date: '',

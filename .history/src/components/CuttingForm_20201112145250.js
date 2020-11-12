@@ -47,6 +47,10 @@ export default function CuttingForm({ location }) {
         console.log(inputList)
     }
 
+    useEffect(()=>{
+        M.AutoInit()
+    }, [])
+
     function handleAddEvent() {
         setInputList([...inputList, {
             date: '',
@@ -112,6 +116,7 @@ export default function CuttingForm({ location }) {
                 </div>
                 {
                     inputList.map((item, i) => {
+                        M.AutoInit()
                         return (
                             <div key={i}>
                                 <div className="input-field">

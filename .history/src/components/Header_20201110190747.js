@@ -34,20 +34,15 @@ const Navbar = () => {
                             {currentUser && <div>
                                 <li><Link to='/' className='waves-effect waves-light'><i className="material-icons" title="Add New Purchase">add</i></Link></li>
                                 <li>
-                                    <Link to='/purchase-history-table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
+                                    <Link to='/table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
                                 </li>
-                                <li>
-                                    <Link to='/pending-fresh-stock' className='waves-effect waves-light'>Pending Fresh Stock</Link>
-                                </li>
-                                <li>
-                                    <Link to='/pending-cutted-stock' className='waves-effect waves-light'>Pending Cutted Stock</Link>
-                                </li>
+
                                 <li>
                                     <Link to='/signup' className='waves-effect waves-light'><i className="material-icons" title="Sign Up">person</i></Link>
                                 </li>
                                 <li>
-                                    <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons" title="Sign Out">power_settings_new</i></Link>
-                                </li>
+                                    <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons" title="Sign Out">power_settings_new</i>
+                                    </Link></li>
                             </div>
                             }
                             {!currentUser && <div><li>
@@ -62,26 +57,21 @@ const Navbar = () => {
 
             <ul id="slide-out" className="sidenav">
                 {currentUser && <div>
-                    <li><Link to='/' className='waves-effect waves-light'><i className="material-icons" title="Add New Purchase">add</i></Link></li>
+                    <li><Link to='/' className='waves-effect waves-light'><i className="material-icons">add</i></Link></li>
                     <li>
-                        <Link to='/purchase-history-table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
+                        <Link to='/table' className='waves-effect waves-light'><i className="material-icons">view_list</i></Link>
+                    </li>
+
+                    <li>
+                        <Link to='/signup' className='waves-effect waves-light'><i className="material-icons">person</i></Link>
                     </li>
                     <li>
-                        <Link to='/pending-fresh-stock' className='waves-effect waves-light'>Pending Fresh Stock</Link>
-                    </li>
-                    <li>
-                        <Link to='/pending-cutted-stock' className='waves-effect waves-light'>Pending Cutted Stock</Link>
-                    </li>
-                    <li>
-                        <Link to='/signup' className='waves-effect waves-light'><i className="material-icons" title="Sign Up">person</i></Link>
-                    </li>
-                    <li>
-                        <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons" title="Sign Out">power_settings_new</i></Link>
-                    </li>
+                        <Link to='/login' className='waves-effect waves-light purple darken-4 ' onClick={handleLogOut}><i className="material-icons">power_settings_new</i>
+                        </Link></li>
                 </div>
                 }
                 {!currentUser && <div><li>
-                    <Link to='/login' className='waves-effect waves-light'><i className="material-icons" title="Sign In">person</i></Link>
+                    <Link to='/login' className='waves-effect waves-light'><i className="material-icons">person</i></Link>
                 </li>
                 </div>}
             </ul>
