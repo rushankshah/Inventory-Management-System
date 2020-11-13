@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
 // import { useHistory } from 'react-router-dom'
@@ -63,8 +63,6 @@ const columns = [
 
 export default function CuttedStockTable() {
 
-    const sellingCompany = useRef()
-
     useEffect(() => {
         getData()
     }, [])
@@ -126,30 +124,17 @@ export default function CuttedStockTable() {
         setLoading(false)
     }
     function handleRowClick(row) {
-        var elem = document.getElementById('modal1')
-        var instance = M.Modal.getInstance(elem)
-        instance.open()
-    }
-    function handleSell() {
-
-    }
-    function handleCancel() {
-
+        M.Modal.
     }
     return (
         <div className="center">
-            <div id="modal1" className="modal">
-                <div className="modal-content">
-                    <h4>Are you sure you want to sell this item?</h4>
-                    <p>Please enter the selling Company name</p>
-                    <div className="input-field">
-                        <input type="text" ref={sellingCompany} required />
-                        <label>Company Name</label>
-                    </div>
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Modal Header</h4>
+                    <p>A bunch of text</p>
                 </div>
-                <div className="modal-footer">
-                    <button onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
-                    <button onClick={handleSell} className="modal-close waves-effect waves-green btn-flat">Sell</button>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                 </div>
             </div>
             <div className="App">

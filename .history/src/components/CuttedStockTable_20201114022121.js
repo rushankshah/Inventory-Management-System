@@ -73,6 +73,10 @@ export default function CuttedStockTable() {
         M.AutoInit()
     })
 
+    const companyDetails = useState({
+        
+    })
+
     const [cuttingHistoryData, setCuttingHistoryData] = useState([])
     const [loading, setLoading] = useState(true)
     // const history = useHistory()

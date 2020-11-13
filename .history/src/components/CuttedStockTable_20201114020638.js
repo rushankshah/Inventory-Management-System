@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
 // import { useHistory } from 'react-router-dom'
@@ -62,8 +62,6 @@ const columns = [
 ];
 
 export default function CuttedStockTable() {
-
-    const sellingCompany = useRef()
 
     useEffect(() => {
         getData()
@@ -133,7 +131,7 @@ export default function CuttedStockTable() {
     function handleSell() {
 
     }
-    function handleCancel() {
+    function handleCancel(){
 
     }
     return (
@@ -141,11 +139,7 @@ export default function CuttedStockTable() {
             <div id="modal1" className="modal">
                 <div className="modal-content">
                     <h4>Are you sure you want to sell this item?</h4>
-                    <p>Please enter the selling Company name</p>
-                    <div className="input-field">
-                        <input type="text" ref={sellingCompany} required />
-                        <label>Company Name</label>
-                    </div>
+                    <p>A bunch of text</p>
                 </div>
                 <div className="modal-footer">
                     <button onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
