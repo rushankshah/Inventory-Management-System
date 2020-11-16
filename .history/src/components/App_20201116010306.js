@@ -13,7 +13,6 @@ import PrivateRoute from './PrivateRoute';
 import ForgotPassword from './ForgotPassword';
 import CuttingForm from './CuttingForm';
 import SellingHistory from './SellingHistory';
-import ScrapPendingStock from './ScrapPendingStock';
 
 export default () => {
 
@@ -31,7 +30,6 @@ export default () => {
           <PrivateRoute path='/pending-fresh-stock' component={PendingFreshStock}></PrivateRoute>
           <PrivateRoute path='/pending-cutted-stock' component={CuttedStockTable}></PrivateRoute>
           <PrivateRoute path='/selling-history' component={SellingHistory}></PrivateRoute>
-          <PrivateRoute path='/scrap-pending' component={ScrapPendingStock}></PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>

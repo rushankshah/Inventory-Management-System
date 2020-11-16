@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 const columns = [
@@ -64,7 +64,6 @@ const columns = [
 export default function CuttedStockTable() {
 
     const sellingCompany = useRef()
-    const sellingDate = useRef()
 
     useEffect(() => {
         getData()
@@ -77,13 +76,12 @@ export default function CuttedStockTable() {
     const [cuttingHistoryData, setCuttingHistoryData] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const history = useHistory()
+    const [selectedItem, setselectedItem] = useState({
 
-    const [itemSelected, setItemSelected] = useState({
-        id: '',
-        soldCompany: ''
-    })
+    }
+    )
 
+    // const history = useHistory()
     async function getData() {
         const CuttingRef = firestore.collection('Item Cut')
         const items = []
@@ -114,75 +112,51 @@ export default function CuttedStockTable() {
                         thick = item['data']['Thickness']
                     }
                 })
-                if (data.Sold !== true) {
-                    setCuttingHistoryData((prevData) => {
-                        prevData.push({
-                            cutting_id: id,
-                            Company: comp,
-                            Purchase_Date: dat,
-                            Cutting_Date: data.cutting_date,
-                            page_no: data.page_no,
-                            Number_of_pieces: data.Number_of_pieces,
-                            Quality: qual,
-                            Thickness: thick,
-                            Width: data.Width,
-                            Weight: data.Weight
-                        })
-                        return prevData
+                setCuttingHistoryData((prevData) => {
+                    prevData.push({
+                        id: id,
+                        Company: comp,
+                        Purchase_Date: dat,
+                        Cutting_Date: data.cutting_date,
+                        page_no: data.page_no,
+                        Number_of_pieces: data.Number_of_pieces,
+                        Quality: qual,
+                        Thickness: thick,
+                        Width: data.Width,
+                        Weight: data.Weight
                     })
-                }
+                    return prevData
+                })
             })
         })
         setLoading(false)
     }
     function handleRowClick(row) {
-        setItemSelected((prevData) => {
-            prevData.id = row.cutting_id
-            return prevData
-        })
-        console.log(itemSelected)
         var elem = document.getElementById('modal1')
         var instance = M.Modal.getInstance(elem)
         instance.open()
     }
-    async function handleSell(e) {
-        e.preventDefault()
-        const company = sellingCompany.current.value
-        const date = sellingDate.current.value
-        setItemSelected({
-            soldCompany: company
-        })
-        console.log('Reached here and item selected is ' + company)
-        const CuttingRef = firestore.collection('/Item Cut')
-        const docRef = CuttingRef.doc(itemSelected['id'])
-        await docRef.update({
-            Sold: true,
-            Sell_Company: company,
-            Sell_Date: date
-        })
-        history.push('/selling-history')
+    function handleSell() {
+
     }
     function handleCancel() {
+
     }
     return (
         <div className="center">
             <div id="modal1" className="modal">
-                <form onSubmit={handleSell}>
+                <form>
                     <div className="modal-content">
                         <h4>Are you sure you want to sell this item?</h4>
-                        <p>Please enter the selling following details</p>
-                        <div className="input-field">
-                            <input type='text' ref={sellingDate} className="datepicker" required />
-                            <label>Selling Date</label>
-                        </div>
+                        <p>Please enter the selling Company name</p>
                         <div className="input-field">
                             <input type="text" ref={sellingCompany} required />
                             <label>Company Name</label>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type='reset' onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
-                        <button type='submit' className="modal-close waves-effect waves-green btn-flat">Sell</button>
+                        <button onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
+                        <button onClick={handleSell} className="modal-close waves-effect waves-green btn-flat">Sell</button>
                     </div>
                 </form>
             </div>

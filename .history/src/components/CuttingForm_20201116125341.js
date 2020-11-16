@@ -75,7 +75,6 @@ export default function CuttingForm({ location }) {
         try {
             const CuttingRef = firestore.collection('/Item Cut')
             inputList.forEach(async (item, index) => {
-                // console.log(item['isScrap'])
                 await CuttingRef.add({
                     Item_ID: id,
                     cutting_date: item['date'],
@@ -84,7 +83,7 @@ export default function CuttingForm({ location }) {
                     Sell_Company: null,
                     Sold: false,
                     Weight: item['weight'],
-                    Width: item['isScrap'] ? 'scrap' : item['width']
+                    Width: item['width']
                 })
             })
             const ItemRef = firestore.collection('/Item')
@@ -135,8 +134,8 @@ export default function CuttingForm({ location }) {
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="checkbox" name='isScrap' onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
-                                        <span>Scrap</span>
+                                        <input type="checkbox" />
+                                        <span>Red</span>
                                     </label>
                                 </div>
                                 <div className="input-field">

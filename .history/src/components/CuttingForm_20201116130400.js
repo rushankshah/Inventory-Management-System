@@ -72,32 +72,32 @@ export default function CuttingForm({ location }) {
     async function handleSubmit(e) {
         e.preventDefault()
         setLoading(true)
-        try {
+        // try {
             const CuttingRef = firestore.collection('/Item Cut')
             inputList.forEach(async (item, index) => {
-                // console.log(item['isScrap'])
-                await CuttingRef.add({
-                    Item_ID: id,
-                    cutting_date: item['date'],
-                    page_no: item['page_no'],
-                    Number_of_pieces: item['number_of_pieces'],
-                    Sell_Company: null,
-                    Sold: false,
-                    Weight: item['weight'],
-                    Width: item['isScrap'] ? 'scrap' : item['width']
-                })
+                console.log(item['isScrap'])
+            //     await CuttingRef.add({
+            //         Item_ID: id,
+            //         cutting_date: item['date'],
+            //         page_no: item['page_no'],
+            //         Number_of_pieces: item['number_of_pieces'],
+            //         Sell_Company: null,
+            //         Sold: false,
+            //         Weight: item['weight'],
+            //         Width: item['width']
+            //     })
             })
-            const ItemRef = firestore.collection('/Item')
-            const docRef = ItemRef.doc(id)
-            await docRef.update({
-                cutted: true
-            })
-            M.toast({ html: 'Document added', classes: 'rounded' })
-            setLoading(false)
-            history.push('/purchase-history-table')
-        } catch (error) {
-            M.toast({ html: 'Error' })
-        }
+            // const ItemRef = firestore.collection('/Item')
+            // const docRef = ItemRef.doc(id)
+            // await docRef.update({
+            //     cutted: true
+            // })
+            // M.toast({ html: 'Document added', classes: 'rounded' })
+            // setLoading(false)
+            // history.push('/purchase-history-table')
+        // } catch (error) {
+        //     M.toast({ html: 'Error' })
+        // }
     }
 
     return (

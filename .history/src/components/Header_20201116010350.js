@@ -43,9 +43,6 @@ const Navbar = () => {
                                     <Link to='/pending-cutted-stock' className='waves-effect waves-light'>Pending Cutted Stock</Link>
                                 </li>
                                 <li>
-                                    <Link to='/scrap-pending' className='waves-effect waves-light'>Pending Scrap</Link>
-                                </li>
-                                <li>
                                     <Link to='/selling-history' className='waves-effect waves-light'>Selling History</Link>
                                 </li>
                                 <li>

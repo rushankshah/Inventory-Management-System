@@ -16,8 +16,7 @@ export default function CuttingForm({ location }) {
         page_no: '',
         width: '',
         weight: '',
-        number_of_pieces: '',
-        isScrap: false
+        number_of_pieces: ''
     },])
 
     const history = useHistory()
@@ -40,7 +39,7 @@ export default function CuttingForm({ location }) {
         // eslint-disable-next-line
     }, [])
 
-    useEffect(() => {
+    useEffect(()=>{
         M.AutoInit()
     }, [])
 
@@ -59,7 +58,6 @@ export default function CuttingForm({ location }) {
             width: '',
             weight: '',
             number_of_pieces: '',
-            isScrap: false
         }])
     }
 
@@ -75,7 +73,6 @@ export default function CuttingForm({ location }) {
         try {
             const CuttingRef = firestore.collection('/Item Cut')
             inputList.forEach(async (item, index) => {
-                // console.log(item['isScrap'])
                 await CuttingRef.add({
                     Item_ID: id,
                     cutting_date: item['date'],
@@ -84,7 +81,7 @@ export default function CuttingForm({ location }) {
                     Sell_Company: null,
                     Sold: false,
                     Weight: item['weight'],
-                    Width: item['isScrap'] ? 'scrap' : item['width']
+                    Width: item['width']
                 })
             })
             const ItemRef = firestore.collection('/Item')
@@ -122,7 +119,7 @@ export default function CuttingForm({ location }) {
                         return (
                             <div key={i}>
                                 <div className="input-field">
-                                    <input type='text' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)} />
+                                    <input type='text' name='date' className="datepicker" value={item.date} required onChange={e => handleChange(e, i)}/>
                                     <label>Date</label>
                                 </div>
                                 <div className="input-field">
@@ -132,12 +129,6 @@ export default function CuttingForm({ location }) {
                                 <div className="input-field">
                                     <input type="number" name="width" step='0.01' min='0' value={item.width} required onChange={e => handleChange(e, i)} />
                                     <label>Width</label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="checkbox" name='isScrap' onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
-                                        <span>Scrap</span>
-                                    </label>
                                 </div>
                                 <div className="input-field">
                                     <input type="number" name='number_of_pieces' step='0.01' min='0' value={item.number_of_pieces} required onChange={e => handleChange(e, i)} />

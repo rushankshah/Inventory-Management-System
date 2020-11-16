@@ -148,7 +148,6 @@ export default function CuttedStockTable() {
     async function handleSell(e) {
         e.preventDefault()
         const company = sellingCompany.current.value
-        const date = sellingDate.current.value
         setItemSelected({
             soldCompany: company
         })
@@ -157,8 +156,7 @@ export default function CuttedStockTable() {
         const docRef = CuttingRef.doc(itemSelected['id'])
         await docRef.update({
             Sold: true,
-            Sell_Company: company,
-            Sell_Date: date
+            Sell_Company: company
         })
         history.push('/selling-history')
     }

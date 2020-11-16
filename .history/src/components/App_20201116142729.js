@@ -31,7 +31,7 @@ export default () => {
           <PrivateRoute path='/pending-fresh-stock' component={PendingFreshStock}></PrivateRoute>
           <PrivateRoute path='/pending-cutted-stock' component={CuttedStockTable}></PrivateRoute>
           <PrivateRoute path='/selling-history' component={SellingHistory}></PrivateRoute>
-          <PrivateRoute path='/scrap-pending' component={ScrapPendingStock}></PrivateRoute>
+          <PrivateRoute path='/scrap' component={ScrapPendingStock}></PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
 const columns = [
@@ -64,7 +64,6 @@ const columns = [
 export default function CuttedStockTable() {
 
     const sellingCompany = useRef()
-    const sellingDate = useRef()
 
     useEffect(() => {
         getData()
@@ -77,7 +76,7 @@ export default function CuttedStockTable() {
     const [cuttingHistoryData, setCuttingHistoryData] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const history = useHistory()
+    // const history = useHistory()
 
     const [itemSelected, setItemSelected] = useState({
         id: '',
@@ -148,7 +147,6 @@ export default function CuttedStockTable() {
     async function handleSell(e) {
         e.preventDefault()
         const company = sellingCompany.current.value
-        const date = sellingDate.current.value
         setItemSelected({
             soldCompany: company
         })
@@ -157,12 +155,11 @@ export default function CuttedStockTable() {
         const docRef = CuttingRef.doc(itemSelected['id'])
         await docRef.update({
             Sold: true,
-            Sell_Company: company,
-            Sell_Date: date
+            Sell_Company: company
         })
-        history.push('/selling-history')
     }
     function handleCancel() {
+
     }
     return (
         <div className="center">
@@ -170,11 +167,7 @@ export default function CuttedStockTable() {
                 <form onSubmit={handleSell}>
                     <div className="modal-content">
                         <h4>Are you sure you want to sell this item?</h4>
-                        <p>Please enter the selling following details</p>
-                        <div className="input-field">
-                            <input type='text' ref={sellingDate} className="datepicker" required />
-                            <label>Selling Date</label>
-                        </div>
+                        <p>Please enter the selling Company name</p>
                         <div className="input-field">
                             <input type="text" ref={sellingCompany} required />
                             <label>Company Name</label>

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { useHistory } from 'react-router-dom';
 
 const columns = [
     {
@@ -61,8 +61,8 @@ const columns = [
     }
 ];
 
-export default function CuttedStockTable() {
 
+export default function ScrapPendingStock() {
     const sellingCompany = useRef()
     const sellingDate = useRef()
 
