@@ -42,7 +42,7 @@ export default function CuttingForm({ location }) {
 
     useEffect(() => {
         M.AutoInit()
-    })
+    }, [])
 
     function handleChange(e, i) {
         const { name, value } = e.target
@@ -72,43 +72,31 @@ export default function CuttingForm({ location }) {
     async function handleSubmit(e) {
         e.preventDefault()
         setLoading(true)
-        var tWeight = 0
-        inputList.forEach((item)=>{
-            tWeight += parseInt(item['weight'])
-        })
-        var r = true;
-        if(tWeight !== parseInt(totalWeight)){
-            r = window.confirm('Total weight doesnt match. Do you still want to add?');
-        }
-        if(r === true){
-            try {
-                const CuttingRef = firestore.collection('/Item Cut')
-                inputList.forEach(async (item, index) => {
-                    // console.log(item['isScrap'])
-                    await CuttingRef.add({
-                        Item_ID: id,
-                        cutting_date: item['date'],
-                        page_no: item['page_no'],
-                        Number_of_pieces: item['number_of_pieces'],
-                        Sell_Company: null,
-                        Sold: false,
-                        Weight: item['weight'],
-                        Width: item['isScrap'] ? 'scrap' : item['width']
-                    })
+        try {
+            const CuttingRef = firestore.collection('/Item Cut')
+            inputList.forEach(async (item, index) => {
+                // console.log(item['isScrap'])
+                await CuttingRef.add({
+                    Item_ID: id,
+                    cutting_date: item['date'],
+                    page_no: item['page_no'],
+                    Number_of_pieces: item['number_of_pieces'],
+                    Sell_Company: null,
+                    Sold: false,
+                    Weight: item['weight'],
+                    Width: item['isScrap'] ? 'scrap' : item['width']
                 })
-                const ItemRef = firestore.collection('/Item')
-                const docRef = ItemRef.doc(id)
-                await docRef.update({
-                    cutted: true
-                })
-                M.toast({ html: 'Document added', classes: 'rounded' })
-                setLoading(false)
-                history.push('/purchase-history-table')
-            } catch (error) {
-                M.toast({ html: 'Error' })
-            }
-        } else{
-            M.toast({html: 'Operation Cancelled', classes: 'rounded'})
+            })
+            const ItemRef = firestore.collection('/Item')
+            const docRef = ItemRef.doc(id)
+            await docRef.update({
+                cutted: true
+            })
+            M.toast({ html: 'Document added', classes: 'rounded' })
+            setLoading(false)
+            history.push('/purchase-history-table')
+        } catch (error) {
+            M.toast({ html: 'Error' })
         }
     }
 
@@ -142,7 +130,7 @@ export default function CuttingForm({ location }) {
                                     <label>Page Number</label>
                                 </div>
                                 <div className="input-field">
-                                    <input type="number" name="width" step='0.01' min='0' value={item.width} onChange={e => handleChange(e, i)} />
+                                    <input type="number" name="width" step='0.01' min='0' value={item.width} required onChange={e => handleChange(e, i)} />
                                     <label>Width</label>
                                 </div>
                                 <div>

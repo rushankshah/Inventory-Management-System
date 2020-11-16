@@ -108,7 +108,7 @@ export default function CuttingForm({ location }) {
                 M.toast({ html: 'Error' })
             }
         } else{
-            M.toast({html: 'Operation Cancelled', classes: 'rounded'})
+            M.Toast({html: 'Operation Cancelled', classes: 'rounded'})
         }
     }
 

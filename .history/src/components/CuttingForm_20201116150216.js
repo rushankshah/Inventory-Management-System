@@ -80,7 +80,7 @@ export default function CuttingForm({ location }) {
         if(tWeight !== parseInt(totalWeight)){
             r = window.confirm('Total weight doesnt match. Do you still want to add?');
         }
-        if(r === true){
+        if(r){
             try {
                 const CuttingRef = firestore.collection('/Item Cut')
                 inputList.forEach(async (item, index) => {
@@ -108,7 +108,7 @@ export default function CuttingForm({ location }) {
                 M.toast({ html: 'Error' })
             }
         } else{
-            M.toast({html: 'Operation Cancelled', classes: 'rounded'})
+            M.Toast({html: 'Operation Cancelled', classes: 'rounded'})
         }
     }
 

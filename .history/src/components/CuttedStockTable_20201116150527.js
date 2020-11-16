@@ -172,7 +172,7 @@ export default function CuttedStockTable() {
                         <h4>Are you sure you want to sell this item?</h4>
                         <p>Please enter the selling following details</p>
                         <div className="input-field">
-                            <input type='date' ref={sellingDate} required />
+                            <input type='text' ref={sellingDate} className="datepicker" required />
                             <label>Selling Date</label>
                         </div>
                         <div className="input-field">
