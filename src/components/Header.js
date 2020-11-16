@@ -32,9 +32,9 @@ const Navbar = () => {
                         <a href="/" className="brand-logo s12 "> <img src={img} width="6%" height="6%" alt="logo"></img>    Trade Track</a>
                         <ul className="right hide-on-med-and-down">
                             {currentUser && <div>
-                                <li><Link to='/' className='waves-effect waves-light'><i className="material-icons" title="Add New Purchase">add</i></Link></li>
+                                <li><Link to='/' className='waves-effect waves-light'>Add New Purchase</Link></li>
                                 <li>
-                                    <Link to='/purchase-history-table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
+                                    <Link to='/purchase-history-table' className='waves-effect waves-light'>Purchase History</Link>
                                 </li>
                                 <li>
                                     <Link to='/pending-fresh-stock' className='waves-effect waves-light'>Pending Fresh Stock</Link>
@@ -68,15 +68,15 @@ const Navbar = () => {
 
             <ul id="slide-out" className="sidenav">
                 {currentUser && <div>
-                    <li><Link to='/' className='waves-effect waves-light'><i className="material-icons" title="Add New Purchase">add</i></Link></li>
+                    <li><Link to='/' className='waves-effect waves-light'>Add New Purchase</Link></li>
                     <li>
-                        <Link to='/purchase-history-table' className='waves-effect waves-light'><i className="material-icons" title="Purchase History">view_list</i></Link>
+                        <Link to='/purchase-history-table' className='waves-effect waves-light'>Purchase History</Link>
                     </li>
                     <li>
                         <Link to='/pending-fresh-stock' className='waves-effect waves-light'>Pending Fresh Stock</Link>
                     </li>
                     <li>
-                        <Link to='/pending-cutted-stock' className='waves-effect waves-light'>Pending Cutted Stock</Link>
+                        <Link to='/pending-cutted-stock' className='waves-effect waves-light'>Pending Cut Stock</Link>
                     </li>
                     <li>
                         <Link to='/signup' className='waves-effect waves-light'><i className="material-icons" title="Sign Up">person</i></Link>

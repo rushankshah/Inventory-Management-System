@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('../images/bg.jpg');
+    background-image: url('../images/bgg.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -10,7 +10,8 @@ body {
 
   @media only screen and (max-width: 767px) {
     body {
-      background-image: url('../images/bg.jpg');
+      background-image: url('../images/bgg.png');
+      
     }}
     
  /* label color */
@@ -19,7 +20,11 @@ body {
   }
   .row.card
   {
-    background: rgba(237, 231, 246, 0.600) !important;
+    background: rgb(255, 255, 255)!important;
+  }
+  .checkbox-purple[type="checkbox"]:checked
+  {
+    color:#673ab7 !important;
   }
   /* label focus color */
   .input-field input:focus + label {
@@ -44,8 +49,11 @@ body {
   }
   /* icon prefix focus color */
   .input-field .prefix.active {
-    color:#673ab7 !important;;
+    color:#673ab7 !important;
   }
-   
+ .bg
+ {
+   background: rgba(255,255,255, 0.1) !important;
+ }  
   
   

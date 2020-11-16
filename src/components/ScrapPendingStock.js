@@ -178,18 +178,21 @@ export default function ScrapPendingStock() {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type='reset' onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
-                        <button type='submit' className="modal-close waves-effect waves-green btn-flat">Sell</button>
+                        <button type='reset' onClick={handleCancel} className="modal-close waves-effect waves-purple darken-4 btn-flat">Cancel</button>
+                        <button type='submit' className="modal-close waves-effect waves-purple darken-4 btn-flat">Sell</button>
                     </div>
                 </form>
             </div>
-            <div className="center">
-                <div className="input-field">
+            <div className="row">
+            <div className="col s8 offset-s2">
+                
+                <div className="input-field ">
                     <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                    <label>Enter your query</label>
-                </div>
+                    <label>Enter your query</label></div>
+                </div><div className="col"></div>
+               <div className="col s8 offset-s2"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Pending Scrap Stock</h4>
                 {!loading && <DataTable
-                    title="Pending Scrap"
+                   
                     columns={columns}
                     data={search(cuttingHistoryData)}
                     pagination
@@ -200,5 +203,6 @@ export default function ScrapPendingStock() {
                 />}
             </div>
         </div>
+        </div></div>
     )
 }

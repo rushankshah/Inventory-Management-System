@@ -178,6 +178,7 @@ export default function CuttedStockTable() {
             <div id="modal1" className="modal">
                 <form onSubmit={handleSell}>
                     <div className="modal-content">
+                        
                         <h4>Are you sure you want to sell this item?</h4>
                         <p>Please enter the selling following details</p>
                         <div className="input-field">
@@ -190,18 +191,22 @@ export default function CuttedStockTable() {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type='reset' onClick={handleCancel} className="modal-close waves-effect waves-red btn-flat">Cancel</button>
-                        <button type='submit' className="modal-close waves-effect waves-green btn-flat">Sell</button>
+                        <button type='reset' onClick={handleCancel} className="modal-close waves-effect waves-purple darken-4 btn-flat">Cancel</button>
+                        <button type='submit' className="modal-close waves-effect waves-purple darken-4 btn-flat">Sell</button>
                     </div>
                 </form>
             </div>
-            <div className="center">
-                <div className="input-field">
+            <div>
+            <div className="row">
+            <div className="col s8 offset-s2">
+                
+                <div className="input-field ">
                     <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                    <label>Enter your query</label>
-                </div>
+                    <label>Enter your query</label></div>
+                </div><div className="col"></div>
+               <div className="col s8 offset-s2"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Pending Cut Stock</h4>
                 {!loading && <DataTable
-                    title="Pending Cutting Stock"
+                   
                     columns={columns}
                     data={search(cuttingHistoryData)}
                     pagination
@@ -211,6 +216,6 @@ export default function CuttedStockTable() {
                     onRowClicked={handleRowClick}
                 />}
             </div>
-        </div>
+        </div></div></div></div>
     )
 }

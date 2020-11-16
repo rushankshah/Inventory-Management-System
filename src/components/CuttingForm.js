@@ -115,25 +115,35 @@ export default function CuttingForm({ location }) {
 
     return (
         <div className='container'>
-            <div className='container white-text'>
-                <h1 className='center'>{company}</h1>
-                <div className='row s12'>
+            <div className='container center'>
+            <div className="row card hoverable-p">
+                            <div className="card-content">
+                <h4 className='center'>{company}</h4><br></br>
+                <div className='row s6'>
                     <div>
-                        <h5>Quality: {quality}</h5>
-                        <h5>Number of pieces: {number_of_pieces}</h5>
-                        <h5>Thickness: {thickness}</h5>
+                        <h6>Quality: {quality}</h6>
+                        <h6>Number of pieces: {number_of_pieces}</h6>
+                        <h6>Thickness: {thickness}</h6>
                     </div>
                     <div>
-                        <h5>Total weight: {totalWeight}</h5>
+                        <h6>Total weight: {totalWeight}</h6>
                     </div>
-                </div>
+                </div></div></div>
                 <div className="row">
-                    <input type="button" value='add' onClick={handleAddEvent} />
+                    <input type='button' className='btn waves-effect waves-light deep-purple' value='add' onClick={handleAddEvent} />
                 </div>
                 {
                     inputList.map((item, i) => {
                         return (
-                            <div key={i}>
+                            <div key={i} className='container'>
+                <div className="row">
+                    <div className="col l3 m3 s12"></div>
+                    <div className="col l6 m3 s12">
+                        <div className="row card hoverable-p">
+                            <div className="card-content">
+                                <h3> <div className="center">Cut</div></h3>
+                                <form  className="row s12">
+                                    <div className="col s8 offset-s1">
                                 <div className="input-field">
                                     <input type='date' name='date' value={item.date} required onChange={e => handleChange(e, i)} />
                                     <label>Date</label>
@@ -148,7 +158,7 @@ export default function CuttingForm({ location }) {
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="checkbox" name='isScrap' onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
+                                        <input type="checkbox" name='isScrap'className="checkbox-purple" onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
                                         <span>Scrap</span>
                                     </label>
                                 </div>
@@ -160,8 +170,9 @@ export default function CuttingForm({ location }) {
                                     <input type="number" name='weight' step='0.01' min='0' value={item.weight} required onChange={e => handleChange(e, i)} />
                                     <label>Weight</label>
                                 </div>
-                                <input type='button' value='remove' onClick={() => handleRemoveEvent(i)} />
-                            </div>
+                                <input type='button' value='remove' className='btn  waves-effect waves-light deep-purple'onClick={() => handleRemoveEvent(i)} />
+                            </div> </form></div></div>
+                        </div></div></div>
                         )
                     })
                 }

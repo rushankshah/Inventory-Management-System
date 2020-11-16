@@ -101,14 +101,18 @@ export default function PendingFreshStockTable() {
     }
 
     return (
-        <div>
-            <div className="center">
-                <div className="input-field">
+        <div >
+            <div className="row">
+            <div className="col s8 offset-s2">
+                
+                <div className="input-field ">
                     <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                    <label>Enter your query</label>
-                </div>
+                    <label>Enter your query</label></div>
+                </div><div className="col"></div>
+               <div className="col s8 offset-s2"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Pending Fresh Stock</h4>
+                               <div className="bg">
                 {!loading && <DataTable
-                    title="Pending Fresh Stock"
+                    
                     columns={columns}
                     data={search(purchaseHistoryData)}
                     pagination
@@ -116,8 +120,8 @@ export default function PendingFreshStockTable() {
                     highlightOnHover
                     striped
                     onRowClicked={handleClick}
-                />}
-            </div>
-        </div>
+                />}</div>
+            </div></div></div></div>
+        
     )
 }

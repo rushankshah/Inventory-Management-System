@@ -145,13 +145,16 @@ export default function SellingHistory() {
         )
     }
     return (
-        <div className='center'>
-            <div className="input-field">
-                <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                <label>Enter your query</label>
-            </div>
+        <div className="row">
+            <div className="col s8 offset-s2">
+                
+                <div className="input-field ">
+                    <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
+                    <label>Enter your query</label></div>
+                </div><div className="col"></div>
+               <div className="col s10 offset-s1"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Selling History</h4>
             {!loading && <DataTable
-                title="Selling History"
+                
                 columns={columns}
                 data={search(sellingData)}
                 pagination
@@ -159,6 +162,6 @@ export default function SellingHistory() {
                 highlightOnHover
                 striped
             />}
-        </div>
+        </div></div></div>
     )
 }
