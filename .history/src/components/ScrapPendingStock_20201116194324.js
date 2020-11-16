@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
-import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { useHistory } from 'react-router-dom';
 
 const columns = [
     {
@@ -42,18 +42,6 @@ const columns = [
         center: true,
     },
     {
-        name: 'Thickness',
-        selector: 'Thickness',
-        sortable: true,
-        center: true,
-    },
-    {
-        name: 'Width',
-        selector: 'Width',
-        sortable: true,
-        center: true,
-    },
-    {
         name: 'Weight',
         selector: 'Weight',
         sortable: true,
@@ -61,8 +49,8 @@ const columns = [
     }
 ];
 
-export default function CuttedStockTable() {
 
+export default function ScrapPendingStock() {
     const sellingCompany = useRef()
     const sellingDate = useRef()
 
@@ -83,15 +71,6 @@ export default function CuttedStockTable() {
         id: '',
         soldCompany: ''
     })
-
-    const [q, setQ] = useState('')
-
-    function search(rows) {
-        const cols = rows[0] && Object.keys(rows[0])
-        return rows.filter((row) =>
-            cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
-        )
-    }
 
     async function getData() {
         const CuttingRef = firestore.collection('Item Cut')
@@ -123,7 +102,7 @@ export default function CuttedStockTable() {
                         thick = item['data']['Thickness']
                     }
                 })
-                if (data.Sold !== true && data.Width !== 'scrap') {
+                if (data.Sold !== true && data.Width === 'scrap') {
                     setCuttingHistoryData((prevData) => {
                         prevData.push({
                             cutting_id: id,
@@ -195,15 +174,11 @@ export default function CuttedStockTable() {
                     </div>
                 </form>
             </div>
-            <div className="center">
-                <div className="input-field">
-                    <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                    <label>Enter your query</label>
-                </div>
+            <div className="App">
                 {!loading && <DataTable
-                    title="Pending Cutting Stock"
+                    title="Pending Scrap"
                     columns={columns}
-                    data={search(cuttingHistoryData)}
+                    data={cuttingHistoryData}
                     pagination
                     responsive
                     highlightOnHover

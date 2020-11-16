@@ -110,7 +110,7 @@ export default function PendingFreshStockTable() {
                 {!loading && <DataTable
                     title="Pending Fresh Stock"
                     columns={columns}
-                    data={search(purchaseHistoryData)}
+                    data={purchaseHistoryData}
                     pagination
                     responsive
                     highlightOnHover

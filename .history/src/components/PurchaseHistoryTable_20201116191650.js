@@ -51,7 +51,6 @@ const columns = [
 function App() {
     const [purchaseHistoryData, setPurchaseData] = useState([])
     const [loading, setLoading] = useState(true)
-    const [q, setQ] = useState('')
     async function getData() {
         const ItemRef = firestore.collection('/Item')
         await ItemRef.get().then(function (snapshot) {
@@ -83,23 +82,12 @@ function App() {
         M.AutoInit()
     })
 
-    function search(rows){
-        const cols = rows[0] && Object.keys(rows[0])
-        return rows.filter((row) => 
-            cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
-        )
-    }
-
     return (
         <div className="center">
-            <div className="input-field">
-                <input type="text" value={q} onChange={(e) =>{setQ(e.target.value)}}/>
-                <label>Enter your query</label>
-            </div>
             {!loading && <DataTable
                 title="Purchase History"
                 columns={columns}
-                data={search(purchaseHistoryData)}
+                data={purchaseHistoryData}
                 pagination
                 responsive
                 highlightOnHover

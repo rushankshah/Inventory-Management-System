@@ -84,10 +84,7 @@ function App() {
     })
 
     function search(rows){
-        const cols = rows[0] && Object.keys(rows[0])
-        return rows.filter((row) => 
-            cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
-        )
+        return rows.filter((row) => row.Company.toLowerCase().indexOf(q) > -1)
     }
 
     return (

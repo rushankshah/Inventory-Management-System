@@ -86,13 +86,6 @@ export default function CuttedStockTable() {
 
     const [q, setQ] = useState('')
 
-    function search(rows) {
-        const cols = rows[0] && Object.keys(rows[0])
-        return rows.filter((row) =>
-            cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
-        )
-    }
-
     async function getData() {
         const CuttingRef = firestore.collection('Item Cut')
         const items = []
@@ -195,15 +188,11 @@ export default function CuttedStockTable() {
                     </div>
                 </form>
             </div>
-            <div className="center">
-                <div className="input-field">
-                    <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
-                    <label>Enter your query</label>
-                </div>
+            <div className="App">
                 {!loading && <DataTable
                     title="Pending Cutting Stock"
                     columns={columns}
-                    data={search(cuttingHistoryData)}
+                    data={cuttingHistoryData}
                     pagination
                     responsive
                     highlightOnHover

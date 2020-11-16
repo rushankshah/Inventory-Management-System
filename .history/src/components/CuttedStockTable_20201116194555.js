@@ -195,7 +195,7 @@ export default function CuttedStockTable() {
                     </div>
                 </form>
             </div>
-            <div className="center">
+            <div className="App">
                 <div className="input-field">
                     <input type="text" value={q} onChange={(e) => { setQ(e.target.value) }} />
                     <label>Enter your query</label>
