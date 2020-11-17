@@ -108,8 +108,8 @@ export default function CuttingForm({ location }) {
                 M.toast({ html: 'Error' })
             }
         } else{
-            setLoading(false)
             M.toast({html: 'Operation Cancelled', classes: 'rounded'})
+            setLoading(false)
         }
     }
 
@@ -137,8 +137,8 @@ export default function CuttingForm({ location }) {
                         return (
                             <div key={i} className='container'>
                 <div className="row">
-                    <div className="col l12 m12 s12"></div>
-                    <div className="col l12 m12 s12">
+                    <div className="col l3 m3 s12"></div>
+                    <div className="col l6 m3 s12">
                         <div className="row card hoverable-p">
                             <div className="card-content">
                                 <h3> <div className="center">Cut</div></h3>
@@ -158,7 +158,7 @@ export default function CuttingForm({ location }) {
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="checkbox" name='isScrap' className="purple" onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
+                                        <input type="checkbox" name='isScrap'className="checkbox-purple" onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
                                         <span>Scrap</span>
                                     </label>
                                 </div>

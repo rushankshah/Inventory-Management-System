@@ -108,8 +108,8 @@ export default function CuttingForm({ location }) {
                 M.toast({ html: 'Error' })
             }
         } else{
-            setLoading(false)
             M.toast({html: 'Operation Cancelled', classes: 'rounded'})
+            setLoading(false)
         }
     }
 
@@ -158,7 +158,7 @@ export default function CuttingForm({ location }) {
                                 </div>
                                 <div>
                                     <label>
-                                        <input type="checkbox" name='isScrap' className="purple" onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
+                                        <input type="checkbox" name='isScrap'className="checkbox-purple" onChange={()=>{item.isScrap = !item.isScrap}} value={item.isScrap} />
                                         <span>Scrap</span>
                                     </label>
                                 </div>
