@@ -83,8 +83,9 @@ function App() {
         M.AutoInit()
     })
 
-    function search(rows){
+    function search(rows) {
         const cols = rows[0] && Object.keys(rows[0])
+        console.log(cols);
         return rows.filter((row) =>
             cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
         )
