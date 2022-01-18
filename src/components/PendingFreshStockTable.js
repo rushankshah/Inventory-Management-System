@@ -90,7 +90,7 @@ export default function PendingFreshStockTable() {
     })
 
     function handleClick(row) {
-        history.push('/cutting-form?id=' + row.id + '&company=' + row.Company + '&number_of_pieces=' + row.Number_of_pieces + '&quality=' + row.Quality + '&thickness=' + row.Thickness + '&weight=' + row.Weight)
+        history.push('/cutting-form?id=' + row.id + '&company=' + row.Company + '&number_of_pieces=' + row.Number_of_pieces + '&quality=' + row.Quality + '&thickness=' + row.Thickness + '&weight=' + row.Weight + '&width=' + row.Width)
     }
 
     function search(rows) {

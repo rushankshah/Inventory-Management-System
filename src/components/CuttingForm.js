@@ -9,6 +9,7 @@ export default function CuttingForm({ location }) {
     const [number_of_pieces, setNumber_of_pieces] = useState()
     const [quality, setQuality] = useState('')
     const [thickness, setThickness] = useState()
+    const [width, setWidth] = useState()
     const [loading, setLoading] = useState(false)
     const [totalWeight, setTotalWeight] = useState()
     const [inputList, setInputList] = useState([{
@@ -30,6 +31,7 @@ export default function CuttingForm({ location }) {
         const quality = params.get('quality')
         const thickness = params.get('thickness')
         const weight = params.get('weight')
+        const width = params.get('width')
 
         setID(id)
         setCompany(company)
@@ -37,6 +39,7 @@ export default function CuttingForm({ location }) {
         setQuality(quality)
         setThickness(thickness)
         setTotalWeight(weight)
+        setWidth(width)
         // eslint-disable-next-line
     }, [])
 
@@ -46,8 +49,10 @@ export default function CuttingForm({ location }) {
 
     function handleChange(e, i) {
         const { name, value } = e.target
+        console.log(value);
         const list = [...inputList]
         list[i][name] = value
+        list[i]['weight'] = ((parseInt(list[i]['width'])*parseInt(list[i]['number_of_pieces'])*parseInt(totalWeight))/(parseInt(width))).toFixed().toString()
         setInputList(list)
         console.log(inputList)
     }
@@ -124,6 +129,7 @@ export default function CuttingForm({ location }) {
                         <h6>Quality: {quality}</h6>
                         <h6>Number of pieces: {number_of_pieces}</h6>
                         <h6>Thickness: {thickness}</h6>
+                        <h6>Width: {width}</h6>
                     </div>
                     <div>
                         <h6>Total weight: {totalWeight}</h6>
