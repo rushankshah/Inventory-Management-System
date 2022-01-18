@@ -85,7 +85,7 @@ function App() {
 
     function search(rows){
         const cols = rows[0] && Object.keys(rows[0])
-        return rows.filter((row) => 
+        return rows.filter((row) =>
             cols.some((c) => row[c].toString().toLowerCase().indexOf(q.toLowerCase()) > -1)
         )
     }
