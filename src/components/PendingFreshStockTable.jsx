@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
 import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { CSVLink } from 'react-csv';
 
 export default function PendingFreshStockTable() {
 
@@ -53,7 +54,19 @@ export default function PendingFreshStockTable() {
 
     const [purchaseHistoryData, setPurchaseData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [excelData, setExcelData] = useState([])
+    
+    const csvLinkRef = useRef(null);
     const history = useHistory()
+    const getDate = () => {
+        let today = new Date();
+        let date = parseInt(today.getMonth()+1) + "-" + today.getDate()  + "-" + today.getFullYear();
+        return date;
+      }
+    const csvReport = {
+        filename: `${getDate()}-fresh-stock.csv`,
+        data: excelData,
+      };
     async function getData() {
         const ItemRef = firestore.collection('/Item')
         await ItemRef.get().then(function (snapshot) {
@@ -64,6 +77,18 @@ export default function PendingFreshStockTable() {
                     setPurchaseData((prevData) => {
                         prevData.push({
                             id: id,
+                            Company: data.Company,
+                            Date: data.Date,
+                            Number_of_pieces: data.Number_of_pieces,
+                            Quality: data.Quality,
+                            Thickness: data.Thickness,
+                            Width: data.Width,
+                            Weight: data.Weight
+                        })
+                        return prevData
+                    })
+                    setExcelData((prevData) => {
+                        prevData.push({
                             Company: data.Company,
                             Date: data.Date,
                             Number_of_pieces: data.Number_of_pieces,
@@ -92,6 +117,11 @@ export default function PendingFreshStockTable() {
     function handleClick(row) {
         history.push('/cutting-form?id=' + row.id + '&company=' + row.Company + '&number_of_pieces=' + row.Number_of_pieces + '&quality=' + row.Quality + '&thickness=' + row.Thickness + '&weight=' + row.Weight + '&width=' + row.Width)
     }
+    function handleSubmit(e){
+        e.preventDefault();
+        console.log(excelData);
+        csvLinkRef.current.link.click();
+      } 
 
     function search(rows) {
         const cols = rows[0] && Object.keys(rows[0])
@@ -110,6 +140,13 @@ export default function PendingFreshStockTable() {
                     <label>Enter your query</label></div>
                 </div><div className="col"></div>
                <div className="col s8 offset-s2"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Pending Fresh Stock</h4>
+               <div className="col s12 center">
+                                        <form onSubmit={handleSubmit}>
+                                        <button type="submit" disabled={loading} className="btn  waves-effect waves-light deep-purple">Download Excel<i className="material-icons right">download</i></button>
+                                        </form>
+                                    </div>
+                                    <br />
+                                    <br />
                                <div className="bg">
                 {!loading && <DataTable
                     
@@ -121,7 +158,12 @@ export default function PendingFreshStockTable() {
                     striped
                     onRowClicked={handleClick}
                 />}</div>
-            </div></div></div></div>
+            </div></div></div>
+            <CSVLink 
+          {...csvReport}
+          ref={csvLinkRef}
+        > 
+        </CSVLink></div>
         
     )
 }

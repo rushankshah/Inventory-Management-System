@@ -3,6 +3,7 @@ import DataTable from 'react-data-table-component';
 import { firestore } from '../utils/firebase'
 import { useHistory } from 'react-router-dom'
 import M from 'materialize-css/dist/js/materialize.min.js'
+import { CSVLink } from 'react-csv';
 
 const columns = [
     {
@@ -65,6 +66,8 @@ export default function CuttedStockTable() {
 
     const sellingCompany = useRef()
     const sellingDate = useRef()
+    const [excelData, setExcelData] = useState([])
+    const csvLinkRef = useRef(null);
 
     useEffect(() => {
         getData()
@@ -139,6 +142,20 @@ export default function CuttedStockTable() {
                         })
                         return prevData
                     })
+                    setExcelData((prevData) => {
+                        prevData.push({
+                            Company: comp,
+                            Purchase_Date: dat,
+                            Cutting_Date: data.cutting_date,
+                            page_no: data.page_no,
+                            Number_of_pieces: data.Number_of_pieces,
+                            Quality: qual,
+                            Thickness: thick,
+                            Width: data.Width,
+                            Weight: data.Weight
+                        })
+                        return prevData
+                    })
                 }
             })
         })
@@ -161,7 +178,6 @@ export default function CuttedStockTable() {
         setItemSelected({
             soldCompany: company
         })
-        console.log('Reached here and item selected is ' + company)
         const CuttingRef = firestore.collection('/Item Cut')
         const docRef = CuttingRef.doc(itemSelected['id'])
         await docRef.update({
@@ -171,6 +187,21 @@ export default function CuttedStockTable() {
         })
         history.push('/selling-history')
     }
+    const getDate = () => {
+    let today = new Date();
+    let date = parseInt(today.getMonth()+1) + "-" + today.getDate()  + "-" + today.getFullYear();
+    return date;
+  }
+
+  const csvReport = {
+    filename: `${getDate()}-cutted-stock.csv`,
+    // headers: headers,
+    data: excelData,
+  };
+    function handleSubmit(e){
+        e.preventDefault();
+        csvLinkRef.current.link.click();
+      }
     function handleCancel() {
     }
     return (
@@ -205,6 +236,10 @@ export default function CuttedStockTable() {
                     <label>Enter your query</label></div>
                 </div><div className="col"></div>
                <div className="col s8 offset-s2"><div className="purple darken-4" > <div className="row"></div><h4 className="center white-text">Pending Cut Stock</h4>
+               <form onSubmit={handleSubmit}>
+                                        <button type="submit" disabled={loading} className="btn  waves-effect waves-light deep-purple">Download Excel<i className="material-icons right">download</i></button>
+                                        </form>
+                                        <br />
                 {!loading && <DataTable
                    
                     columns={columns}
@@ -216,6 +251,11 @@ export default function CuttedStockTable() {
                     onRowClicked={handleRowClick}
                 />}
             </div>
-        </div></div></div></div>
+        </div></div></div>
+        <CSVLink 
+          {...csvReport}
+          ref={csvLinkRef}
+        > 
+        </CSVLink></div>
     )
 }
